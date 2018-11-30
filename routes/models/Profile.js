@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 //create Schema that loads info from collection users
 const ProfileSchema = new Schema({
   user : {
-    type : Schema.Types.ObjectId, //associates the profile to the user by the ID
+    type : Schema.Types.ObjectId, //associates the profile to the user by its user._id
     ref: 'users' //refer the collection
   },
   handle : { // SEO friendly URL for ex with name of the user
@@ -36,7 +36,8 @@ const ProfileSchema = new Schema({
   githubusername:{
     type: String
   },
-  experience: [{
+  experience: [
+    {
       title :{
         type: String,
         required : true
@@ -61,9 +62,10 @@ const ProfileSchema = new Schema({
       },
       description :{
         type: String
-      },
+      }
   }],
-  education: [{
+  education: [
+    {
       school :{
         type: String,
         required : true
@@ -109,7 +111,7 @@ const ProfileSchema = new Schema({
     },
   },
   date:{
-    type: String,
+    type: Date,
     default: Date.now
   }
 })
